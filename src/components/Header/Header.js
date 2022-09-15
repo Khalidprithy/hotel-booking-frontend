@@ -22,6 +22,7 @@ const Header = () => {
             key: 'selection'
         }
     ]);
+    console.log(date);
     const [openOptions, setOpenOptions] = useState(false);
     const [options, setOptions] = useState({
         adult: 1,
@@ -47,8 +48,8 @@ const Header = () => {
             <div className='bg-primary h-40'>
                 <h1 className='text-3xl text-white font-bold px-10 pt-4'>Register to get the full experience of HotelView and win exciting gifts</h1>
                 <div className='flex gap-4 pl-10 m-2'>
-                    <button className='btn btn-sm btn-success rounded-sm btn-outline'>Register</button>
-                    <button className='btn btn-sm btn-success rounded-sm btn-outline'>Login</button>
+                    <button className='btn btn-sm btn-success rounded-sm'>Register</button>
+                    <button className='btn btn-sm btn-success rounded-sm'>Login</button>
                 </div>
             </div>
             <div className='flex items-center justify-center ml-10 w-full absolute -bottom-6'>
@@ -58,7 +59,7 @@ const Header = () => {
                 <div className='z-20'>
                     <span
                         onClick={() => setOpenDate(!openDate)}
-                        className='w-24 border-2 border-secondary px-2 py-3 bg-white'>Check-in To Check-out</span>
+                        className='w-24 border-2 border-secondary px-2 py-3 bg-white'>{date[0].startDate ? `${(date[0].startDate?.toDateString())} to  ${(date[0].endDate?.toDateString())} ` : `Check-in to Check-out`} </span>
                     {openDate && <DateRange
                         editableDateInputs={true}
                         onChange={(item) => setDate([item.selection])}

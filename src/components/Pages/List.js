@@ -26,11 +26,11 @@ const List = () => {
                         <div className='flex flex-col'>
                             <label className='font-semibold pb-1 mt-2' htmlFor="location">Destination</label>
                             <input className='rounded-md h-8 px-2' type="text" name="location" id="location" placeholder={destination} />
-                            <label className='font-semibold pb-1 mt-2' htmlFor="date">Check-in-date</label>
+                            <label className='font-semibold pb-1 mt-2' htmlFor="date">Check in</label>
                             <span
                                 className='bg-white rounded-md p-1'
                                 onClick={() => setOpenDate(!openDate)}
-                            >Date to Date</span>
+                            >{(date[0].startDate?.toDateString())} to  {(date[0].endDate?.toDateString())}</span>
                             {openDate && <DateRange
                                 editableDateInputs={true}
                                 onChange={(item) => setDate([item.selection])}

@@ -6,7 +6,7 @@ import aframe from '../../img/TopPicks/aframe.jpg'
 
 const FeaturedProperty = () => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-4 gap-2 mx-4'>
+        <div className='grid grid-cols-1 md:grid-cols-4 gap-2 mx-4 pb-4'>
             <div>
                 <img className='rounded-lg' src={tinyapart} alt="" />
                 <div className='flex flex-col'>
