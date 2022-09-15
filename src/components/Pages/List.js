@@ -5,6 +5,7 @@ import { DateRange } from 'react-date-range';
 import { useLocation } from 'react-router-dom';
 import NavOptions from '../Header/NavOptions';
 import SearchItems from './SearchItems';
+import useFetch from '../../hooks/useFetch.js'
 
 const List = () => {
 
@@ -13,9 +14,21 @@ const List = () => {
 
     const [destination, setDestination] = useState(location.state.destination)
     const [date, setDate] = useState(location.state.date)
-    const [options, setOptions] = useState(location.state.options)
+    const [options, setOptions] = useState(location.state.options);
+    const [min, setMin] = useState(undefined);
+    const [max, setMax] = useState(undefined);
+
+
+    const { data, loading, error, reFetch } = useFetch(`http://localhost:5000/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`)
 
     console.log(location)
+
+
+    const handleClick = () => {
+        reFetch();
+    }
+
+
     return (
         <div>
             <NavOptions></NavOptions>
@@ -43,11 +56,15 @@ const List = () => {
                             <div className='px-2'>
                                 <div className='flex justify-between items-center'>
                                     <span className=''>Min Price <small>per night</small></span>
-                                    <input className='m-2 w-16' type="number" />
+                                    <input
+                                        onChange={e => setMin(e.target.value)}
+                                        className='m-2 w-16' type="number" />
                                 </div>
                                 <div className='flex justify-between items-center'>
                                     <span>Max Price <small>per night</small></span>
-                                    <input className='m-2 w-16' type="number" />
+                                    <input
+                                        onChange={e => setMax(e.target.value)}
+                                        className='m-2 w-16' type="number" />
                                 </div>
                                 <div className='flex justify-between items-center'>
                                     <span>Adult</span>
@@ -63,11 +80,23 @@ const List = () => {
                                 </div>
                             </div>
                         </div>
-                        <button className='btn btn-sm btn-success rounded-sm'>Search</button>
+                        <button
+                            onClick={handleClick}
+                            className='btn btn-sm btn-success rounded-sm'>Search</button>
                     </div>
                 </div>
                 <div className='w-2/3'>
-                    <SearchItems></SearchItems>
+                    {
+                        loading ? "Loading" : <>
+                            {
+                                data.map(item => <SearchItems
+                                    key={item._id}
+                                    item={item}
+                                ></SearchItems>)
+                            }
+                        </>
+                    }
+
                 </div>
             </div>
         </div>
