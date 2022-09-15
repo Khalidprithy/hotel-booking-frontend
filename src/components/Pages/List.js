@@ -13,7 +13,7 @@ const List = () => {
     const [openDate, setOpenDate] = useState(false);
 
     const [destination, setDestination] = useState(location.state.destination)
-    const [date, setDate] = useState(location.state.date)
+    const [dates, setDates] = useState(location.state.dates)
     const [options, setOptions] = useState(location.state.options);
     const [min, setMin] = useState(undefined);
     const [max, setMax] = useState(undefined);
@@ -43,12 +43,12 @@ const List = () => {
                             <span
                                 className='bg-white rounded-md p-1'
                                 onClick={() => setOpenDate(!openDate)}
-                            >{(date[0].startDate?.toDateString())} to  {(date[0].endDate?.toDateString())}</span>
+                            >{(dates[0].startDate?.toDateString())} to  {(dates[0].endDate?.toDateString())}</span>
                             {openDate && <DateRange
                                 editableDateInputs={true}
-                                onChange={(item) => setDate([item.selection])}
+                                onChange={(item) => setDates([item.selection])}
                                 moveRangeOnFirstSelection={false}
-                                ranges={date}
+                                ranges={dates}
                                 className="absolute left-1/3 top-12"
                                 minDate={new Date()}
                             ></DateRange>}

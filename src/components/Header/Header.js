@@ -6,6 +6,8 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns';
 import NavOptions from './NavOptions';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { SearchContext } from '../../context/SearchContex';
 
 
 
@@ -15,14 +17,13 @@ const Header = () => {
     const [openDate, setOpenDate] = useState(false);
     const navigate = useNavigate();
 
-    const [date, setDate] = useState([
+    const [dates, setDates] = useState([
         {
             setDate: new Date(),
             endDate: new Date(),
             key: 'selection'
         }
     ]);
-    console.log(date);
     const [openOptions, setOpenOptions] = useState(false);
     const [options, setOptions] = useState({
         adult: 1,
@@ -38,8 +39,11 @@ const Header = () => {
         })
     }
 
+    const { dispatch } = useContext(SearchContext);
+
     const handleSearch = () => {
-        navigate('/hotels', { state: { destination, date, options } })
+        dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } })
+        navigate('/hotels', { state: { destination, dates, options } })
     }
 
     return (
@@ -59,12 +63,12 @@ const Header = () => {
                 <div className='z-20'>
                     <span
                         onClick={() => setOpenDate(!openDate)}
-                        className='w-24 border-2 border-secondary px-2 py-3 bg-white'>{date[0].startDate ? `${(date[0].startDate?.toDateString())} to  ${(date[0].endDate?.toDateString())} ` : `Check-in to Check-out`} </span>
+                        className='w-24 border-2 border-secondary px-2 py-3 bg-white'>{dates[0].startDate ? `${(dates[0].startDate?.toDateString())} to  ${(dates[0].endDate?.toDateString())} ` : `Check-in to Check-out`} </span>
                     {openDate && <DateRange
                         editableDateInputs={true}
-                        onChange={(item) => setDate([item.selection])}
+                        onChange={(item) => setDates([item.selection])}
                         moveRangeOnFirstSelection={false}
-                        ranges={date}
+                        ranges={dates}
                         className="absolute left-1/3 top-12"
                         minDate={new Date()}
                     ></DateRange>}

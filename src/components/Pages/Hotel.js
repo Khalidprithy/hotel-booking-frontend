@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import NavOptions from '../Header/NavOptions';
 import { MdLocationOn } from 'react-icons/md';
 import { BsXCircle } from 'react-icons/bs';
@@ -6,6 +6,7 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
 import useFetch from '../../hooks/useFetch.js'
 import { useLocation } from 'react-router-dom';
+import { SearchContext } from '../../context/SearchContex';
 
 const Hotel = () => {
     const location = useLocation();
@@ -16,7 +17,16 @@ const Hotel = () => {
 
     const { data, loading, error, reFetch } = useFetch(`http://localhost:5000/hotels/find/${id}`)
 
-    console.log(data)
+    const { dates, options } = useContext(SearchContext);
+
+    const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+    function dayDifference(date1, date2) {
+        const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+        const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+        return diffDays;
+    }
+    const days = dayDifference(dates[0].endDate, dates[0].startDate);
+
 
     const photos = [
         {
@@ -110,7 +120,7 @@ const Hotel = () => {
                             <div className='w-4/12 flex flex-col gap-2 bg-secondary p-2'>
                                 <h1 className='text-center font-bold p-1'>Perfect for small family</h1>
                                 <p className='text-xs'>The Panoramic Hotel is a modern, elegant 4-star hotel perfect for a romantic, charming vacation</p>
-                                <p className='text-2xl font-bold'>$421 <small>(5 nights)</small></p>
+                                <p className='text-2xl font-bold'>${days * data.cheapestPrice * options.room} <small>({days} nights)</small></p>
                                 <button className='btn btn-sm btn-success rounded-sm w-full'>Book Now</button>
                             </div>
 
