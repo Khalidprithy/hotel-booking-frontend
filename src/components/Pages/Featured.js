@@ -7,8 +7,6 @@ import useFetch from '../../hooks/useFetch';
 const Featured = () => {
 
     const { data, loading, error } = useFetch("http://localhost:5000/hotels/countByCity?cities=Dhaka,Rangpur,Cox%27s%20Bazar")
-
-    console.log(data)
     return (
         <div className='mt-16 grid grid-cols-1 md:grid-cols-3 gap-2 mx-4 z-10'>
             {loading ? ("Please Wait") : <>
