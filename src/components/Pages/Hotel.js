@@ -5,15 +5,21 @@ import { BsXCircle } from 'react-icons/bs';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
 import useFetch from '../../hooks/useFetch.js'
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContex';
+import { AuthContext } from '../../context/AuthContext';
+import Booking from './Booking';
 
 const Hotel = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const id = location.pathname.split("/")[2];
     console.log(id)
     const [slideIndex, setSlideIndex] = useState(0);
     const [open, setOpen] = useState(false);
+    const [openBooking, setOpenBooking] = useState(false);
+
+    const { user } = useContext(AuthContext);
 
     const { data, loading, error, reFetch } = useFetch(`http://localhost:5000/hotels/find/${id}`)
 
@@ -74,6 +80,17 @@ const Hotel = () => {
         setSlideIndex(newSlideIndex);
     }
 
+    const handleClick = () => {
+        if (user) {
+            { setOpenBooking(true) }
+
+        } else {
+            navigate('/login')
+        }
+
+    }
+
+
     return (
         <div>
             <NavOptions></NavOptions>
@@ -94,7 +111,12 @@ const Hotel = () => {
                             className='m-2 text-3xl text-black'></BsArrowRightCircleFill>
                     </div>}
                     <div className='flex flex-col m-4'>
-                        <h1 className='text-3xl font-semibold'>{data.name}</h1>
+                        <div className='flex items-center justify-between'>
+                            <h1 className='text-3xl font-semibold'>{data.name}</h1>
+                            <button
+                                onClick={handleClick}
+                                className='btn btn-success btn-sm rounded-sm'>Book Now</button>
+                        </div>
                         <div className='flex items-center'>
                             <MdLocationOn></MdLocationOn>
                             <span className='text-sm'>{data.address}</span>
@@ -121,12 +143,17 @@ const Hotel = () => {
                                 <h1 className='text-center font-bold p-1'>Perfect for small family</h1>
                                 <p className='text-xs'>The Panoramic Hotel is a modern, elegant 4-star hotel perfect for a romantic, charming vacation</p>
                                 <p className='text-2xl font-bold'>${days * data.cheapestPrice * options.room} <small>({days} nights)</small></p>
-                                <button className='btn btn-sm btn-success rounded-sm w-full'>Book Now</button>
+                                <button
+                                    onClick={handleClick}
+                                    className='btn btn-sm btn-success rounded-sm w-full'>Book Now</button>
                             </div>
-
                         </div>
                     </div>
                 </div>}
+            {openBooking && <Booking
+                setOpen={setOpenBooking}
+                hotelId={id}
+            ></Booking>}
         </div>
     );
 };

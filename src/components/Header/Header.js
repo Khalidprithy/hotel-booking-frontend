@@ -50,10 +50,9 @@ const Header = () => {
         <div className='relative'>
             <NavOptions></NavOptions>
             <div className='bg-primary h-40'>
-                <h1 className='text-3xl text-white font-bold px-10 pt-4'>Register to get the full experience of HotelView and win exciting gifts</h1>
+                <h1 className='text-3xl text-white font-bold px-10 pt-4'>Find the cheapest hotel with best deals to 5 star hotels. Plan your next vacation now</h1>
                 <div className='flex gap-4 pl-10 m-2'>
-                    <button className='btn btn-sm btn-success rounded-sm'>Register</button>
-                    <button className='btn btn-sm btn-success rounded-sm'>Login</button>
+                    <button className='btn btn-sm btn-success rounded-sm'>Best Deals</button>
                 </div>
             </div>
             <div className='flex items-center justify-center ml-10 w-full absolute -bottom-6'>
