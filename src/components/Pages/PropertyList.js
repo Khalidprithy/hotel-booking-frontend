@@ -19,14 +19,13 @@ const PropertyList = () => {
                 : <>
                     {
                         images.map((img, i) =>
-                            <div className=' flex flex-col' key={i}>
-                                <img className='w-72 rounded-md' src={img} alt="" />
-                                <div className='text-black'>
-                                    <h4 className='text-sm font-semibold uppercase'>{data[i]?.type}</h4>
-                                    <p className='text-xs capitalize'>{data[i]?.count} {data[i]?.type}</p>
+                            <div className='flex flex-col mx-auto' key={i}>
+                                <img className='w-72 md:w-full rounded-md' src={img} alt="" />
+                                <div className='text-black mt-2'>
+                                    <h4 className='text-xl md:text-2xl font-semibold uppercase'>{data[i]?.type}</h4>
+                                    <p className='text-xs md:text-xl capitalize'>{data[i]?.count} {data[i]?.type}</p>
                                 </div>
                             </div>
-
                         )
                     }
                 </>}

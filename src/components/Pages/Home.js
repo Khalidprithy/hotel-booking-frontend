@@ -7,13 +7,15 @@ import PropertyList from './PropertyList';
 
 const Home = () => {
     return (
-        <div>
+        <div >
             <Header></Header>
-            <Featured></Featured>
-            <h1 className='text-xl font-semibold ml-4 py-4'>Browse property by type</h1>
-            <PropertyList></PropertyList>
-            <h1 className='text-xl font-semibold ml-4 py-4'>Top guest picks</h1>
-            <FeaturedProperty></FeaturedProperty>
+            <div className='mx-0 md:mx-10'>
+                <Featured></Featured>
+                <h1 className='text-2xl md:text-4xl text-center md:text-left font-bold ml-4 py-4 my-4'>Browse property by type</h1>
+                <PropertyList></PropertyList>
+                <h1 className='text-2xl md:text-4xl text-center md:text-left font-bold ml-4 py-4 my-4'>Top guest picks</h1>
+                <FeaturedProperty></FeaturedProperty>
+            </div>
             <MailList></MailList>
         </div>
     );

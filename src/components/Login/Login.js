@@ -33,7 +33,8 @@ const Login = () => {
     };
     console.log(user)
     return (
-        <div className='w-72 md:w-96 mx-auto'>
+        <div className='w-72 min-h-screen md:w-96 mx-auto'>
+            <h1 className='text-4xl font-semibold m-10'>Login</h1>
             <div className="card-body border rounded-lg shadow-lg m-4">
                 <div className="form-control">
                     <label className="label">

@@ -15,7 +15,7 @@ const FeaturedProperty = () => {
                 <>
                     {
                         data.map(item =>
-                            <div key={item._id}>
+                            <div className='mx-auto' key={item._id}>
                                 <img className='rounded-lg' src={tinyapart} alt="" />
                                 <div className='flex flex-col'>
                                     <h1 className='text-xl font-semibold'>{item.name}</h1>

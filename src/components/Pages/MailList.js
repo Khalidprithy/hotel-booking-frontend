@@ -28,15 +28,16 @@ const MailList = () => {
                 <div className='p-10'>
                     <h1 className='text-2xl font-semibold'>Let's get in touch</h1>
                     <p>We'er open for any suggestions or just to have a chat.</p>
+                    <p className='flex items-center gap-3'>Call us to book <FiPhoneCall className='text-green-500'></FiPhoneCall></p>
                 </div>
                 <div className='flex flex-col gap-4 pl-8'>
                     <div className='flex items-center gap-2'>
                         <FiPhoneCall className='text-blue-400'></FiPhoneCall>
-                        <p>01455321487</p>
+                        <p>654643187</p>
                     </div>
                     <div className='flex items-center gap-2'>
                         <MdEmail className='text-secondary'></MdEmail>
-                        <p>khalidprithy@gmail.com</p>
+                        <p>hotelview@gmail.com</p>
                     </div>
                     <div className='flex items-center gap-2'>
                         <MdLocationPin className='text-orange-400'></MdLocationPin>
@@ -48,13 +49,13 @@ const MailList = () => {
                 <div className="p-4 mt-4">
                     <form ref={form} onSubmit={sendEmail}>
                         <div className='flex my-2'>
-                            <input className='rounded-md py-1 px-3 w-full md:w-1/2' placeholder='Name' type="text" name="user_name" required autocomplete="off" />
+                            <input className='rounded-md py-1 px-3 w-full md:w-1/2' placeholder='Name' type="text" name="user_name" required autoComplete="off" />
                         </div>
                         <div className='flex my-2'>
-                            <input className='rounded-md px-3 py-1 w-full md:w-1/2' placeholder='Email' type="email" name="user_email" required autocomplete="off" />
+                            <input className='rounded-md px-3 py-1 w-full md:w-1/2' placeholder='Email' type="email" name="user_email" required autoComplete="off" />
                         </div>
                         <div className='flex flex-col my-2'>
-                            <textarea className='rounded-md px-3 mt-1 h-24' placeholder='Message' name="message" />
+                            <textarea className='rounded-md px-3 mt-1 h-44' placeholder='Message' name="message" />
                         </div>
                         <input className='btn btn-sm btn-outline text-white rounded-sm mb-2 w-24' type="submit" value="Send" />
                     </form>

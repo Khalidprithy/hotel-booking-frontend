@@ -82,7 +82,7 @@ const Hotel = () => {
 
     const handleClick = () => {
         if (user) {
-            { setOpenBooking(true) }
+            setOpenBooking(true);
 
         } else {
             navigate('/login')
@@ -112,17 +112,17 @@ const Hotel = () => {
                     </div>}
                     <div className='flex flex-col m-4'>
                         <div className='flex items-center justify-between'>
-                            <h1 className='text-3xl font-semibold'>{data.name}</h1>
+                            <h1 className='text-3xl md:text-5xl font-semibold'>{data.name}</h1>
                             <button
                                 onClick={handleClick}
                                 className='btn btn-success btn-sm rounded-sm'>Book Now</button>
                         </div>
                         <div className='flex items-center'>
                             <MdLocationOn></MdLocationOn>
-                            <span className='text-sm'>{data.address}</span>
+                            <span className='text-sm md:text-xl'>{data.address}</span>
                         </div>
-                        <span className='text-success font-semibold'>Excellent location - {data.distance}m from center</span>
-                        <span className='text-sm font-bold mb-4'>Book a stay over $100 and get free airport taxi</span>
+                        <span className='text-success text-md md:text-xl font-semibold'>Excellent location - {data.distance}m from center</span>
+                        <span className='text-sm md:text-xl font-bold mb-4'>Book a stay over $100 and get free airport taxi</span>
                         <div className='grid grid-cols-3 mx-2 gap-1'>
                             {
                                 photos.map((photo, i) =>
@@ -134,14 +134,14 @@ const Hotel = () => {
                                 )
                             }
                         </div>
-                        <div className='m-2 flex gap-8'>
-                            <div className='w-8/12'>
-                                <h1 className='font-bold text-xl'>{data.title}</h1>
-                                <p className='text-sm'>{data.description}</p>
+                        <div className='m-2 flex flex-col md:flex-row gap-8'>
+                            <div className='w-full md:w-8/12'>
+                                <h1 className='font-bold text-xl md:text-4xl'>{data.title}</h1>
+                                <p className='text-sm md:text-2xl'>{data.description}</p>
                             </div>
-                            <div className='w-4/12 flex flex-col gap-2 bg-secondary p-2'>
-                                <h1 className='text-center font-bold p-1'>Perfect for small family</h1>
-                                <p className='text-xs'>The Panoramic Hotel is a modern, elegant 4-star hotel perfect for a romantic, charming vacation</p>
+                            <div className='w-full md:w-4/12 flex flex-col gap-2 bg-secondary p-2'>
+                                <h1 className='text-center text-xl md:text-3xl font-bold p-1'>Perfect for small family</h1>
+                                <p className='text-xs md:text-xl'>The Panoramic Hotel is a modern, elegant 4-star hotel perfect for a romantic, charming vacation</p>
                                 <p className='text-2xl font-bold'>${days * data.cheapestPrice * options.room} <small>({days} nights)</small></p>
                                 <button
                                     onClick={handleClick}

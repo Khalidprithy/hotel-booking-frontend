@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
 import Login from "./components/Login/Login";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
       </Routes>
       <Footer></Footer>
+      <Toaster></Toaster>
     </div >
   );
 }
