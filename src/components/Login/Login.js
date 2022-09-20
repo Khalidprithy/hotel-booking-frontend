@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+// import './Login.css'
 
 const Login = () => {
 
@@ -25,7 +26,7 @@ const Login = () => {
         dispatch({ type: "LOGIN_START" });
         try {
             const res = await axios.post("http://localhost:5000/auth/login", credentials);
-            dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+            dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
             navigate("/")
         } catch (err) {
             dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
@@ -63,6 +64,29 @@ const Login = () => {
                         disabled={loading} onClick={handleClick}
                         className="btn w-1/2 mx-auto btn-secondary">Login</button>
                 </div>
+            </div>
+
+            <div>
+                {/* <div class="login-box">
+                    <h2>Login</h2>
+                    <form>
+                        <div class="user-box">
+                            <input type="text" name="" required="" />
+                            <label>Username</label>
+                        </div>
+                        <div class="user-box">
+                            <input type="password" name="" required="" />
+                            <label>Password</label>
+                        </div>
+                        <a href="#">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            login
+                        </a>
+                    </form>
+                </div> */}
             </div>
         </div>
     );

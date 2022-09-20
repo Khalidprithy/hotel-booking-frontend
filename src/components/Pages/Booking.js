@@ -65,38 +65,51 @@ const Booking = ({ setOpen, hotelId }) => {
 
     console.log(selectRoom)
     return (
-        <div className='w-full fixed top-0 md:top-1/4 left-0 flex items-center justify-center'>
+        <div className='w-full fixed top-0 md:top-16 left-0 flex items-center justify-center'>
             <div className='relative p-1 md:p-10 bg-white rounded-lg'>
                 <p
                     onClick={() => setOpen(false)}
                     className="btn btn-sm btn-link absolute top-0 right-0"
                 ><BsXCircle className='text-2xl'></BsXCircle></p>
-                <span className='p-2 text-xl font-bold'>Select your rooms</span>
+                <div>
+                    {
+                        data.length === 0 ?
+                            <span className='p-2 text-xl text-red-500 font-bold'>No rooms available</span>
+                            :
+                            <span className='p-2 text-xl font-bold'>Select your rooms</span>
+                    }
+                </div>
                 {
                     data.map(item =>
-                        <div className='flex items-center justify-between ga-1 md:gap-4 p-2'>
-                            <div>
-                                <h1 className='text-xl font-semibold'>{item?.title}</h1>
-                                <p>{item?.description}</p>
-                                <div className='flex items-center gap-1'>
-                                    <p>Max people: <span className='font-bold'>{item?.maxPeople}</span></p>
-                                    <p>Price: <span className='font-semibold'>${item?.price}</span></p>
-                                </div>
-                            </div>
-                            <div className='flex flex-wrap items-center gap-1'>
-                                {item?.roomNumber.map(room =>
-                                    <div className='flex flex-col'>
-                                        <label htmlFor="check">{room?.number}</label>
-                                        <input disabled={!isAvailable(room)} type="checkbox" id='check' value={room?._id} onChange={handleRoomSelect} />
+                        <div>
+                            {item?.title && <div className='flex items-center justify-between ga-1 md:gap-4 p-2 border rounded-lg my-1 hover:bg-gray-200'>
+                                <div>
+                                    <h1 className='text-xl font-semibold'>{item?.title}</h1>
+                                    <p>{item?.description}</p>
+                                    <div className='flex items-center gap-1'>
+                                        <p>Max people: <span className='font-bold'>{item?.maxPeople}</span></p>
+                                        <p>Price: <span className='font-semibold'>${item?.price}</span></p>
                                     </div>
-                                )}
-                            </div>
+                                </div>
+                                <div className='flex flex-wrap items-center gap-1'>
+                                    {item?.roomNumber.map(room =>
+                                        <div className='flex flex-col'>
+                                            <label htmlFor="check">{room?.number}</label>
+                                            <input disabled={!isAvailable(room)} type="checkbox" id='check' value={room?._id} onChange={handleRoomSelect} />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>}
+
                         </div>
                     )
                 }
-                <button
-                    onClick={handleBook}
-                    className='btn btn-success'>Book Now</button>
+                {
+                    data.length === 0 ? <></> : <button
+                        onClick={handleBook}
+                        className='btn btn-success mx-auto'>Book Now</button>
+                }
+
             </div>
         </div>
     );

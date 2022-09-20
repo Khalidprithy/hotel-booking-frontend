@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const SearchItems = ({ item }) => {
     return (
         <div className='m-2'>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-1 border border-info rounded-md'>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-4 border border-info rounded-md mb-4'>
                 <img className='p-1 rounded-md' src="https://media.cntraveler.com/photos/53dae9a4dcd5888e145d57ac/16:9/w_2560,c_limit/louis-hotel-munich-germany-111471-1.jpg" alt="" />
                 <div className='flex flex-col gap-1 p-2'>
                     <h1 className='text-3xl font-semibold'>{item.name}</h1>

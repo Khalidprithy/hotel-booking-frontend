@@ -9,6 +9,15 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContex';
 import { AuthContext } from '../../context/AuthContext';
 import Booking from './Booking';
+import room1 from '../../img/room/rooms1.jpg'
+import room2 from '../../img/room/rooms2.jpg'
+import room3 from '../../img/room/rooms3.jpg'
+import room4 from '../../img/room/rooms4.jpg'
+import room5 from '../../img/room/rooms5.jpg'
+import room6 from '../../img/room/rooms6.jpg'
+import room7 from '../../img/room/rooms7.jpg'
+import room8 from '../../img/room/rooms8.jpg'
+import room9 from '../../img/room/rooms9.jpg'
 
 const Hotel = () => {
     const location = useLocation();
@@ -36,32 +45,33 @@ const Hotel = () => {
 
     const photos = [
         {
-            src: "https://media.nomadicmatt.com/2021/hoteltips2.jpg",
+            src: room1,
         },
         {
-            src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2XFEVooQxkZ12a3IiCMKi2bPMl5obwt7phw&usqp=CAU",
+            src: room2,
         },
         {
-            src: "https://media.nomadicmatt.com/2021/hoteltips2.jpg",
+            src: room3,
         },
         {
-            src: "https://media.nomadicmatt.com/2021/hoteltips2.jpg",
+            src: room4,
         },
         {
-            src: "https://media.nomadicmatt.com/2021/hoteltips2.jpg",
+            src: room5,
         },
         {
-            src: "https://media.nomadicmatt.com/2021/hoteltips2.jpg",
+            src: room6,
         },
         {
-            src: "https://media.nomadicmatt.com/2021/hoteltips2.jpg",
+            src: room7,
         },
         {
-            src: "https://media.nomadicmatt.com/2021/hoteltips2.jpg",
+            src: room8,
         },
         {
-            src: "https://media.nomadicmatt.com/2021/hoteltips2.jpg",
+            src: room9,
         },
+
     ]
 
     const handleOpen = (i) => {
@@ -130,6 +140,7 @@ const Hotel = () => {
                                         <img
                                             onClick={() => handleOpen(i)}
                                             src={photo.src} alt="" />
+
                                     </div>
                                 )
                             }

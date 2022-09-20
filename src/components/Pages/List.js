@@ -32,8 +32,8 @@ const List = () => {
     return (
         <div>
             <NavOptions></NavOptions>
-            <div className='flex flex-col md:flex-row mx-6 mt-2'>
-                <div className='w-full md:w-1/3 mb-4'>
+            <div className='flex flex-col justify-between md:flex-row mx-6 mt-2'>
+                <div className='w-full md:w-1/4 lg:w-3/12 mb-4'>
                     <div className='flex flex-col bg-secondary rounded-md p-2 sticky top-4 max-h-max'>
                         <h1 className='text-xl font-semibold'>Search </h1>
                         <div className='flex flex-col'>
@@ -85,7 +85,10 @@ const List = () => {
                             className='btn btn-sm btn-success rounded-sm'>Search</button>
                     </div>
                 </div>
-                <div className='w-full md:w-2/3'>
+                <div className='w-full md:w-0 lg:1/12'>
+
+                </div>
+                <div className='w-full md:w-3/4 lg:w-8/12'>
                     {
                         loading ? "Loading" : <>
                             {
