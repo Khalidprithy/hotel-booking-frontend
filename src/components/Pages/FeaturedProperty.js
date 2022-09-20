@@ -15,12 +15,12 @@ const FeaturedProperty = () => {
                 <>
                     {
                         data.map(item =>
-                            <div className='mx-auto' key={item._id}>
+                            <div className='mx-auto border p-2 rounded-md shadow-sm hover:shadow-2xl' key={item._id}>
                                 <img className='rounded-lg' src={tinyapart} alt="" />
                                 <div className='flex flex-col'>
-                                    <h1 className='text-xl font-semibold'>{item.name}</h1>
-                                    <h4>{item.city}</h4>
-                                    <p className='font-semibold'>Starting from ${item.cheapestPrice}</p>
+                                    <h1 className='text-2xl font-semibold'>{item.name}</h1>
+                                    <h4 className='text-xl'>{item.city}</h4>
+                                    <p className='font-semibold'>Starting from $ <span className='text-xl font-bold text-success'>{item.cheapestPrice}</span></p>
                                     {item.rating && <p><span className='btn btn-xs rounded-sm'>{item.rating}</span> Very Good</p>}
                                 </div>
                             </div>

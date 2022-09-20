@@ -82,10 +82,10 @@ const Hotel = () => {
     const handleMove = (direction) => {
         let newSlideIndex;
         if (direction === "l") {
-            newSlideIndex = slideIndex === 0 ? 5 : slideIndex - 1;
+            newSlideIndex = slideIndex === 0 ? 8 : slideIndex - 1;
         }
         else {
-            newSlideIndex = slideIndex === 5 ? 0 : slideIndex + 1;
+            newSlideIndex = slideIndex === 8 ? 0 : slideIndex + 1;
         }
         setSlideIndex(newSlideIndex);
     }
@@ -109,16 +109,16 @@ const Hotel = () => {
                     {open && <div className='flex items-center bg-black bg-opacity-10 sticky top-0 left-0 z-40'>
                         <BsXCircle
                             onClick={() => setOpen(false)}
-                            className='absolute top-5 right-5 text-2xl bg-white rounded-full cursor-pointer'></BsXCircle>
+                            className='absolute top-5 right-5 text-2xl lg:text-6xl bg-white rounded-full cursor-pointer'></BsXCircle>
                         <BsArrowLeftCircleFill
                             onClick={() => handleMove("l")}
-                            className='m-2 text-3xl text-black'></BsArrowLeftCircleFill>
+                            className='m-2 text-3xl lg:text-6xl rounded-full text-black'></BsArrowLeftCircleFill>
                         <div className='w-full flex items-center justify-center'>
                             <img className='w-4/5 mt-5' src={photos[slideIndex].src} alt="" />
                         </div>
                         <BsArrowRightCircleFill
                             onClick={() => handleMove("r")}
-                            className='m-2 text-3xl text-black'></BsArrowRightCircleFill>
+                            className='m-2 text-3xl lg:text-6xl text-black'></BsArrowRightCircleFill>
                     </div>}
                     <div className='flex flex-col m-4'>
                         <div className='flex items-center justify-between'>
@@ -133,13 +133,15 @@ const Hotel = () => {
                         </div>
                         <span className='text-success text-md md:text-xl font-semibold'>Excellent location - {data.distance}m from center</span>
                         <span className='text-sm md:text-xl font-bold mb-4'>Book a stay over $100 and get free airport taxi</span>
-                        <div className='grid grid-cols-3 mx-2 gap-1'>
+                        <div className='grid grid-cols-3 mx-2 '>
                             {
                                 photos.map((photo, i) =>
                                     <div>
                                         <img
                                             onClick={() => handleOpen(i)}
-                                            src={photo.src} alt="" />
+                                            src={photo?.src} alt=""
+                                            className='hover:scale-95 duration-300 ease-in'
+                                        />
 
                                     </div>
                                 )
