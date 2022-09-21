@@ -35,7 +35,7 @@ const Login = () => {
     console.log(user)
     return (
         <div className='w-72 min-h-screen md:w-96 mx-auto'>
-            <h1 className='text-4xl font-semibold m-10'>Login</h1>
+            <h1 className='text-4xl font-semibold m-10 text-center text-success'>Login</h1>
             <div className="card-body border rounded-lg shadow-lg m-4">
                 <div className="form-control">
                     <label className="label">
@@ -62,7 +62,7 @@ const Login = () => {
                 <div className="form-control mt-2">
                     <button
                         disabled={loading} onClick={handleClick}
-                        className="btn w-1/2 mx-auto btn-secondary">Login</button>
+                        className="btn w-1/2 mx-auto btn-success">Login</button>
                 </div>
             </div>
 
