@@ -5,12 +5,12 @@ const SearchItems = ({ item }) => {
     return (
         <div className='m-2'>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4 border border-info rounded-md mb-4'>
-                <img className='p-1 rounded-md' src="https://media.cntraveler.com/photos/53dae9a4dcd5888e145d57ac/16:9/w_2560,c_limit/louis-hotel-munich-germany-111471-1.jpg" alt="" />
+                <img className='p-1 rounded-md' src={`${item?.photos}` || "https://media-cdn.tripadvisor.com/media/photo-s/16/1a/ea/54/hotel-presidente-4s.jpg"} alt="" />
                 <div className='flex flex-col gap-1 p-2'>
                     <h1 className='text-3xl font-semibold'>{item.name}</h1>
                     <span className='font-semibold'>{item.distance}m from center</span>
                     <span className='bg-success text-white px-1 rounded-sm w-fit'>Free airport taxi</span>
-                    <span className='font-bold'>{item.description}</span>
+                    <span className='font-bold'>{item.title}</span>
                     <span className='text-xs md:text-xl font-semibold text-success'>Free cancellation</span>
                     <span className='text-xs md:text-xl text-success'>You can cancel later, Book now</span>
                 </div>

@@ -1,25 +1,25 @@
-import { useContext } from "react";
 import { Toaster } from "react-hot-toast";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
 import Login from "./components/Login/Login";
 import Home from "./components/Pages/Home";
 import Hotel from "./components/Pages/Hotel";
 import List from "./components/Pages/List";
 import Footer from "./components/Shared/Footer";
-import { AuthContext } from "./context/AuthContext";
+// import { useContext } from "react";
+// import { AuthContext } from "./context/AuthContext";
 
 function App() {
 
-  const RequiredAuth = ({ children }) => {
-    const { user } = useContext(AuthContext);
+  // const RequiredAuth = ({ children }) => {
+  //   const { user } = useContext(AuthContext);
 
-    if (!user) {
-      return <Navigate to='/login' />
-    }
+  //   if (!user) {
+  //     return <Navigate to='/login' />
+  //   }
 
-    return children;
-  }
+  //   return children;
+  // }
 
 
   return (

@@ -7,7 +7,7 @@ import useFetch from '../../hooks/useFetch';
 
 const FeaturedProperty = () => {
 
-    const { data, loading, error } = useFetch("http://localhost:5000/hotels?features=true&limit=4")
+    const { data, loading, error } = useFetch("https://hotel-booking-server.onrender.com/hotels?features=true&limit=4")
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-4 gap-2 mx-4 pb-4'>
@@ -16,7 +16,7 @@ const FeaturedProperty = () => {
                     {
                         data.map(item =>
                             <div className='mx-auto border p-2 rounded-md shadow-sm hover:shadow-2xl' key={item._id}>
-                                <img className='rounded-lg' src={tinyapart} alt="" />
+                                <img className='rounded-lg' src={item.photos} alt="" />
                                 <div className='flex flex-col'>
                                     <h1 className='text-2xl font-semibold'>{item.name}</h1>
                                     <h4 className='text-xl'>{item.city}</h4>

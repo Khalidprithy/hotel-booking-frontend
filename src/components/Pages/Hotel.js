@@ -23,14 +23,13 @@ const Hotel = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const id = location.pathname.split("/")[2];
-    console.log(id)
     const [slideIndex, setSlideIndex] = useState(0);
     const [open, setOpen] = useState(false);
     const [openBooking, setOpenBooking] = useState(false);
 
     const { user } = useContext(AuthContext);
 
-    const { data, loading, error, reFetch } = useFetch(`http://localhost:5000/hotels/find/${id}`)
+    const { data, loading, error, reFetch } = useFetch(`https://hotel-booking-server.onrender.com/hotels/find/${id}`)
 
     const { dates, options } = useContext(SearchContext);
 

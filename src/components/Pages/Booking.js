@@ -10,7 +10,7 @@ const Booking = ({ setOpen, hotelId }) => {
     const navigate = useNavigate();
     const [selectRoom, setSelectRoom] = useState([]);
     const { dates } = useContext(SearchContext)
-    const { data, loading, error } = useFetch(`http://localhost:5000/hotels/room/${hotelId}`)
+    const { data, loading, error } = useFetch(`https://hotel-booking-server.onrender.com/hotels/room/${hotelId}`);
 
     const getSelectedDate = (startDate, endDate) => {
         const start = new Date(startDate);
@@ -29,7 +29,6 @@ const Booking = ({ setOpen, hotelId }) => {
     };
 
     const alldates = getSelectedDate(dates[0].startDate, dates[0].endDate);
-    console.log(alldates);
 
 
     const isAvailable = (room) => {
@@ -48,22 +47,27 @@ const Booking = ({ setOpen, hotelId }) => {
 
     const handleBook = async () => {
         try {
-            await Promise.all(
-                selectRoom.map((roomId) => {
-                    const res = axios.put(`http://localhost:5000/rooms/availability/${roomId}`, {
-                        dates: alldates,
-                    });
-                    return res.data;
-                })
-            );
-            toast.success("Your room booked successfully")
-            setOpen(false);
-            navigate("/");
+            if (selectRoom.length === 0) {
+                toast.error('Please select a room');
+                return;
+            } else {
+                await Promise.all(
+                    selectRoom.map((roomId) => {
+                        const res = axios.put(`https://hotel-booking-server.onrender.com/rooms/availability/${roomId}`, {
+                            dates: alldates,
+                        });
+                        return res.data;
+                    })
+                );
+                toast.success("Your room booked successfully")
+                setOpen(false);
+                navigate("/");
+            }
+
         } catch (err) { }
     }
 
 
-    console.log(selectRoom)
     return (
         <div className='w-full fixed top-0 md:top-16 left-0 flex items-center justify-center'>
             <div className='relative p-1 md:p-10 bg-white rounded-lg'>

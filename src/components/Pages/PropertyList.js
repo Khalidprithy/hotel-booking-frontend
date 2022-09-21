@@ -8,7 +8,7 @@ import useFetch from '../../hooks/useFetch';
 
 const PropertyList = () => {
 
-    const { data, loading, error } = useFetch("http://localhost:5000/hotels/countByType")
+    const { data, loading, error } = useFetch("https://hotel-booking-server.onrender.com/hotels/countByType")
 
     const images = [hotel, cabin, resort, camp, apartment]
 
