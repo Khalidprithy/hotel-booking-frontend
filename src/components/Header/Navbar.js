@@ -17,7 +17,7 @@ const Navbar = () => {
                         <input type="text" placeholder="Search" className="input input-bordered rounded-md hidden md:block " />
                     </div>
                     {!user ?
-                        <button className='btn btn-success'>Login</button>
+                        <Link to='/login' className='btn btn-success'>Login</Link>
                         :
                         <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
