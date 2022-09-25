@@ -23,30 +23,13 @@ const MailList = () => {
 
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 bg-white pt-10'>
-            <div className='bg-white pb-6'>
-                <div className='p-10'>
-                    <h1 className='text-2xl font-semibold'>Let's get in touch</h1>
-                    <p>We'er open for any suggestions or just to have a chat.</p>
-                    <p className='flex items-center gap-3'>Call us to book <FiPhoneCall className='text-green-500'></FiPhoneCall></p>
-                </div>
-                <div className='flex flex-col gap-4 pl-8'>
-                    <div className='flex items-center gap-2'>
-                        <FiPhoneCall className='text-blue-400'></FiPhoneCall>
-                        <p>654643187</p>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                        <MdEmail className='text-secondary'></MdEmail>
-                        <p>hotelview@gmail.com</p>
-                    </div>
-                    <div className='flex items-center gap-2'>
-                        <MdLocationPin className='text-orange-400'></MdLocationPin>
-                        <p>Mohammodpur, Dhaka</p>
-                    </div>
-                </div>
+        <div className='bg-white pt-10'>
+            <div className='text-center'>
+                <h1 className='text-4xl font-bold'>Contact us</h1>
+                <p className='text-2xl font-light'>Feel free to give us any feedback</p>
             </div>
-            <div className='bg-secondary'>
-                <div className="p-4 mt-4">
+            <div className='bg-secondary m-2 rounded-lg'>
+                <div className="p-4 mt-4 w-1/3 mx-auto">
                     <form ref={form} onSubmit={sendEmail}>
                         <div className='flex my-2'>
                             <input className='rounded-md py-1 px-3 w-full md:w-1/2' placeholder='Name' type="text" name="user_name" required autoComplete="off" />

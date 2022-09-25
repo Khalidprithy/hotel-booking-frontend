@@ -47,7 +47,7 @@ const Header = () => {
     }
 
     return (
-        <div className='relative'>
+        <div className='relative  m-2'>
             <NavOptions></NavOptions>
             <div className='bg-primary h-48'>
                 <h1 className='text-2xl md:text-4xl text-white font-bold px-10 pt-4'>Find the cheapest hotel with best deals to 5 star hotels. <span className='hidden md:block'>Plan your next vacation now</span> </h1>

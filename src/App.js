@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Header/Navbar";
 import Login from "./components/Login/Login";
+import Register from "./components/Login/Register";
 import Home from "./components/Pages/Home";
 import Hotel from "./components/Pages/Hotel";
 import List from "./components/Pages/List";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/hotels" element={<List></List>}></Route>
         <Route path="/hotels/:id" element={<Hotel></Hotel>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
       </Routes>
       <Footer></Footer>
       <Toaster></Toaster>

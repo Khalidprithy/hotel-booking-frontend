@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 // import './Login.css'
 
@@ -64,6 +64,7 @@ const Login = () => {
                         disabled={loading} onClick={handleClick}
                         className="btn w-1/2 mx-auto btn-success">Login</button>
                 </div>
+                <Link to='/register'>Register</Link>
             </div>
 
             <div>
